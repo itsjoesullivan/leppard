@@ -42,6 +42,10 @@
 			width: 15%;
 		}
 
+		.transport .prev.active, .transport .next.active {
+			opacity: 0.5;
+		}
+
 		.simple-playlist {
 			top: 30px;
 			position:absolute;

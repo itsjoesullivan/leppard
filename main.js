@@ -4,7 +4,7 @@ var log = function() {
 	console.log.apply(console,arguments);
 };
 
-var img, _container = false, transport;
+var img, _container = false, transport, nextButton, spaceButton, prevButton;
 
 var spotifyUI = $("wrapper");
 var body = document.getElementsByTagName('body')[0];
@@ -12,11 +12,14 @@ var body = document.getElementsByTagName('body')[0];
 init();
 render();
 
+var _on = true;
+
 function hide() {
 	img.style.display = 'none';
 	_container.style.display = 'none';
 	transport.style.display = 'none';
 	spotifyUI.style.opacity = 1;
+	_on = false;
 }
 
 function show() {
@@ -24,9 +27,9 @@ function show() {
 	_container.style.display = 'block';
 	transport.style.display = 'block';
 	spotifyUI.style.opacity = 0;
+	_on = true;
 }
 
-var _on = true;
 function toggle() {
 	if(_on) {
 		hide();
@@ -129,14 +132,17 @@ function renderTransport() {
 	space.className = 'space';
 	space.innerHTML = 'PLAY [space]';
 	space.addEventListener('click', _core.contextPlayer.togglePlay.bind(_core.contextPlayer));
+	spaceButton = space;
 	var next = document.createElement('div');
 	next.className = 'next';
 	next.innerHTML = 'NEXT';
 	next.addEventListener('click', _core.contextPlayer.next.bind(_core.contextPlayer));
+	nextButton = next;
 	var prev = document.createElement('div');
 	prev.innerHTML = 'PREV.';
 	prev.className = 'prev';
 	prev.addEventListener('click', _core.contextPlayer.previous.bind(_core.contextPlayer));
+	prevButton = prev;
 	transport.appendChild(prev);
 	transport.appendChild(space);
 	transport.appendChild(next);
@@ -144,10 +150,22 @@ function renderTransport() {
 
 function previous() {
 	_core.contextPlayer.previous();
+	
+	//Acitve on button
+	prevButton.className = prevButton.className + ' active';
+	setTimeout(function() {
+		prevButton.className = prevButton.className.replace(/active/g,'');
+	},200);
 }
 
 function next() {
 	_core.contextPlayer.next();
+
+	//Active on button
+	nextButton.className = prevButton.className + ' active';
+	setTimeout(function() {
+		nextButton.className = prevButton.className.replace(/active/g,'');
+	},200);
 }
 
 
@@ -155,6 +173,8 @@ key('escape', hide);
 //key('escape', hide);
 
 document.addEventListener('keydown', function(e) {
+	if(!_on) return;
+	//Alt
 	if(e.keyCode === 18) {
 		if(e.keyLocation===1) return previous(); //left, on macbook at least
 		return next();
