@@ -33,10 +33,11 @@ function show() {
 function toggle() {
 	if(_on) {
 		hide();
+		_on = false;
 	} else {
 		show();
+		_on = true;
 	}
-	_on = !_on;
 }
 
 //grab current cover
