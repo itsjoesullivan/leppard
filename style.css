@@ -1,0 +1,74 @@
+		
+		body, html {
+			height; 100%;
+			width: 100%;
+		}
+		body {
+			overflow:hidden;
+		}
+		#cover {
+			-webkit-filter: blur(7px) brightness(1);
+			position:absolute;
+			width: 110%;
+			top: -50%;
+			left: -5%;
+		}
+		.transport {
+			position:absolute;
+			bottom: 15px;
+			height: 60px;
+			width: 75%;
+			left: 12.5%;
+	    	margin: 0 auto;
+			
+		}
+		.transport div {
+			float:left;
+			position:relative;
+			padding: 1em 0em;
+			text-align:center;
+			text-transform: uppercase;
+			background-color: white;
+			border-radius: 5px;
+			border: 2px solid #ccc;
+			margin: 0 2%;
+			opacity: .7;
+		}
+		.transport .space {
+			width: 55%;
+		}
+
+		.transport .prev, .transport .next {
+			width: 15%;
+		}
+
+		.simple-playlist {
+			top: 30px;
+			position:absolute;
+			width: 50%;
+			left: 25%;
+			background-color: white;
+			border: 3px solid black;
+			opacity: 0.7;
+			text-decoration: none;
+			list-style: none;
+			padding: 0;
+			height: 75%;
+			overflow:auto;
+		}
+		.simple-playlist li {
+			font-family: "Raleway", sans-serif;
+			font-weight: 900;
+			text-decoration: none;
+			list-style: none;
+			padding: 0.5em ;	
+			font-size: 2em;
+			border-bottom: 1px solid black;
+			margin: 0;
+		}
+		.simple-playlist li:last-child {
+			border: none;
+		}
+		.simple-playlist li.active {
+			background-color: red;	
+		}
