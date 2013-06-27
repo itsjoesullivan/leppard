@@ -90,6 +90,7 @@ function loadPlaylist() {
 	}
 }
 
+var scrollTop = 0;
 
 function renderPlaylist(list) {
 	log('renderPlaylist',list);
@@ -103,9 +104,19 @@ function renderPlaylist(list) {
 	list.forEach(function(song, i) {
 		var songEl = renderSong(song,i);
 		container.appendChild(songEl);
-		if(songEl.className.indexOf('active') > -1) container.scrollTop = songEl.offsetTop;
+	
+		if(songEl.className.indexOf('active') > -1) {
+			//Scroll if necessary.
+			//I think this is broken
+			if(container.scrollTop > songEl.offsetTop || container.scrollTop + container.offsetHeight < (songEl.offsetTop + songEl.offsetHeight)) {
+				scrollTop = songEl.offsetTop;
+			}
+		}
+		//Put it back where you found it.
+		container.scrollTop = scrollTop;
 	});
 }
+
 
 
 function curtail(text,length) {
