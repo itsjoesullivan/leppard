@@ -53,7 +53,7 @@
 			text-decoration: none;
 			list-style: none;
 			padding: 0;
-			height: 75%;
+			max-height: 75%;
 			overflow:auto;
 		}
 		.simple-playlist li {
