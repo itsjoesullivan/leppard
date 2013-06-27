@@ -142,3 +142,24 @@ function renderTransport() {
 	transport.appendChild(next);
 }
 
+function previous() {
+	_core.contextPlayer.previous();
+}
+
+function next() {
+	_core.contextPlayer.next();
+}
+
+
+key('escape', hide);
+//key('escape', hide);
+
+document.addEventListener('keydown', function(e) {
+	if(e.keyCode === 18) {
+		if(e.keyLocation===1) return previous(); //left, on macbook at least
+		return next();
+	}
+});
+	
+
+
