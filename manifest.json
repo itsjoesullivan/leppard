@@ -1,0 +1,21 @@
+{
+  "name": "leopard",
+	"version": "0.0.1",
+  "description": "simplify",
+  "manifest_version": 2, 
+  "background": { "scripts": ["background.js"] },
+  "page_action": {
+    "default_title": "simplify"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.spotify.com/*"],
+      "css": ["style.css"],
+      "js": ["embed.js"]
+    }
+  ],
+  "permissions" : [
+	    "tabs"
+	],
+  "web_accessible_resources": ["index.js", "toggle.js"]
+}
