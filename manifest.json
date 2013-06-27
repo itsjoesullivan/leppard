@@ -1,15 +1,15 @@
 {
-  "name": "leopard",
-	"version": "0.0.1",
-  "description": "simplify",
+  "name": "leppard",
+	"version": "1.0.0",
+  "description": "simple spotify playlist view.",
   "manifest_version": 2, 
   "background": { "scripts": ["background.js"] },
   "page_action": {
-    "default_title": "simplify"
+    "default_title": "leppard"
   },
   "content_scripts": [
     {
-      "matches": ["https://*.spotify.com/*"],
+      "matches": ["https://play.spotify.com/*"],
       "css": ["style.css"],
       "js": ["embed.js"]
     }
