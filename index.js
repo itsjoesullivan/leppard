@@ -44,6 +44,11 @@ function init() {
 	spotifyUI.style.opacity = 0;
 	_core.contextPlayer._events.play.push(render);
 
+	var link = document.createElement('link');
+	link.setAttribute('href','http://fonts.googleapis.com/css?family=Raleway:400,800');
+	link.setAttribute('rel','stylesheet');
+	body.appendChild(link);
+	renderTransport();
 }
 
 var listening = false;
@@ -51,15 +56,7 @@ var listening = false;
 function render() {
 	log('render');
 	img.src = _core.contextPlayer._currentTrack.image;
-
-	var link = document.createElement('link');
-	link.setAttribute('href','http://fonts.googleapis.com/css?family=Raleway:400,800');
-	link.setAttribute('rel','stylesheet');
-	body.appendChild(link);
-
 	loadPlaylist().then(renderPlaylist);
-	renderTransport();
-
 }
 
 
