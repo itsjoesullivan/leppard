@@ -106,16 +106,25 @@ function renderPlaylist(list) {
 	list.forEach(function(song, i) {
 		var songEl = renderSong(song,i);
 		container.appendChild(songEl);
-	
+		var shift = false;	
 		if(songEl.className.indexOf('active') > -1) {
-			//Scroll if necessary.
-			//I think this is broken
-			if(container.scrollTop > songEl.offsetTop || container.scrollTop + container.offsetHeight < (songEl.offsetTop + songEl.offsetHeight)) {
+			if( 
+				//container is scrolled past the top of the el
+				container.scrollTop > songEl.offsetTop 
+			) {
+				shift = true;
 				scrollTop = songEl.offsetTop;
+				log('setting top:',scrollTop);
+			} else if(
+				//bottom of div is above the bottom of the el
+				container.scrollTop + container.offsetHeight < songEl.offsetTop + songEl.offsetHeight
+			) {
+				scrollTop = songEl.offsetTop + songEl.offsetHeight - container.offsetHeight;
+				log('setting top:',scrollTop);
 			}
+			//Place the scroll
+			container.scrollTop = scrollTop;
 		}
-		//Put it back where you found it.
-		container.scrollTop = scrollTop;
 	});
 }
 
