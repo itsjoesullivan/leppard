@@ -133,6 +133,12 @@ function renderSong(song,i) {
 	if(_core.contextPlayer._currentTrack.__pid === song.playableId) {
 		li.className = 'active';
 	}
+	function playMe() {
+		var me = getSongByIndex(i);
+		playSong(me);	
+	}
+	li.addEventListener('click', playMe);
+	li.addEventListener('touchstart', playMe);
 	return li;
 }
 
@@ -192,6 +198,27 @@ document.addEventListener('keydown', function(e) {
 		return next();
 	}
 });
+
+function getSongByIndex(index) {
+	//going up or down?
+	var curIndex = _core.contextPlayer._currentContext.getIndex();
+	var song;
+	var tries = 0;
+	while(_core.contextPlayer._currentContext.getIndex() !== index) {
+		song = _core.contextPlayer._currentContext[index > curIndex ? 'next' : 'previous']();
+		tries++;
+		if(tries > 100) return false;
+	}
+	return song;
+}
 	
-
-
+function playSong(song) {
+	var songItem = song.item;
+	var songMetaData = song.metadata;
+	var context = _core.contextPlayer._currentContext;
+	songMetaData.uri = songItem;
+	songItem = Spotify.Link.trackLink(songMetaData.__pid).toURI();
+	song = "trackdone";
+	_core.contextPlayer._attemptPlay(song,
+	songItem, songMetaData, context);
+}
