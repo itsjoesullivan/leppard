@@ -55,9 +55,11 @@ function init() {
 	_core.contextPlayer._events.play.push(render);
 
 	var link = document.createElement('link');
-	link.setAttribute('href','http://fonts.googleapis.com/css?family=Raleway:400,800');
+	link.setAttribute('href','https://fonts.googleapis.com/css?family=Raleway:400,800');
 	link.setAttribute('rel','stylesheet');
-	body.appendChild(link);
+	link.setAttribute('media','all');
+	link.setAttribute('type','text/css');
+	document.getElementsByTagName('head')[0].appendChild(link);
 	renderTransport();
 }
 
