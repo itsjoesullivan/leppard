@@ -19,6 +19,7 @@ function hide() {
 	_container.style.display = 'none';
 	transport.style.display = 'none';
 	spotifyUI.style.opacity = 1;
+	body.style.overflow = 'auto';
 	_on = false;
 }
 
@@ -27,6 +28,7 @@ function show() {
 	_container.style.display = 'block';
 	transport.style.display = 'block';
 	spotifyUI.style.opacity = 0;
+	body.style.overflow = 'hidden';
 	_on = true;
 }
 
