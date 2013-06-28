@@ -45,6 +45,12 @@ function init() {
 	img = document.createElement('img');
 	img.setAttribute('id','cover');
 	body.appendChild(img);
+
+	_container = document.createElement('ul')
+	_container.className = 'simple-playlist';
+	body.appendChild(_container);
+
+
 	spotifyUI.style.opacity = 0;
 	_core.contextPlayer._events.play.push(render);
 
@@ -59,6 +65,7 @@ var listening = false;
 
 function render() {
 	log('render');
+	_container.style.cursor = 'default';
 	img.src = _core.contextPlayer._currentTrack.image;
 	loadPlaylist().then(renderPlaylist);
 }
@@ -94,11 +101,6 @@ var scrollTop = 0;
 
 function renderPlaylist(list) {
 	log('renderPlaylist',list);
-	if(!_container) {
-		_container = document.createElement('ul')
-		_container.className = 'simple-playlist';
-		body.appendChild(_container);
-	}
 	var container = _container;
 	container.innerHTML = '';
 	list.forEach(function(song, i) {
@@ -136,6 +138,8 @@ function renderSong(song,i) {
 	function playMe() {
 		var me = getSongByIndex(i);
 		playSong(me);	
+		li.className = li.className + ' queued';
+		_container.style.cursor = 'wait';
 	}
 	li.addEventListener('click', playMe);
 	li.addEventListener('touchstart', playMe);

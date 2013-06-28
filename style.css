@@ -59,6 +59,7 @@
 			padding: 0;
 			max-height: 75%;
 			overflow:auto;
+			cursor: pointer;
 		}
 		.simple-playlist li {
 			font-family: "Raleway", sans-serif;
@@ -69,7 +70,6 @@
 			font-size: 2em;
 			border-bottom: 1px solid black;
 			margin: 0;
-			cursor: pointer;
 		}
 		.simple-playlist li:last-child {
 			border: none;
