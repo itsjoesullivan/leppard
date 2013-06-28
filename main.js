@@ -131,7 +131,7 @@ function renderPlaylist(list) {
 
 
 function curtail(text,length) {
-	length = length || 15;
+	length = length || 45;
 	if(text.length > length) return text.substring(0,7) + '...'
 	return text;
 }
