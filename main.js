@@ -1,7 +1,7 @@
 
 //Initialize
 var log = function() {
-	console.log.apply(console,arguments);
+//	console.log.apply(console,arguments);
 };
 
 var img, _container = false, transport, nextButton, spaceButton, prevButton;
@@ -168,11 +168,11 @@ function renderTransport() {
 	spaceButton = space;
 	var next = document.createElement('div');
 	next.className = 'next';
-	next.innerHTML = 'NEXT';
+	next.innerHTML = 'NEXT [ALT]';
 	next.addEventListener('click', _core.contextPlayer.next.bind(_core.contextPlayer));
 	nextButton = next;
 	var prev = document.createElement('div');
-	prev.innerHTML = 'PREV.';
+	prev.innerHTML = 'PREV. [ALT]';
 	prev.className = 'prev';
 	prev.addEventListener('click', _core.contextPlayer.previous.bind(_core.contextPlayer));
 	prevButton = prev;
