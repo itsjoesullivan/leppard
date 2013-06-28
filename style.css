@@ -77,3 +77,6 @@
 		.simple-playlist li.active {
 			background-color: red;	
 		}
+		.simple-playlist li.queued {
+			background-color: orange;
+		}
