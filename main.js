@@ -212,6 +212,8 @@ document.addEventListener('keydown', function(e) {
 		if(e.keyLocation===1) return previous(); //left, on macbook at least
 		return next();
 	}
+	if(key.isPressed('left')) return previous();
+	if(key.isPressed('right')) return next();
 });
 
 function getSongByIndex(index) {
